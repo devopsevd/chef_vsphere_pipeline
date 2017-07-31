@@ -125,7 +125,7 @@ node('master') {
                     //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
                 }
             }
-            stage('Install Docker') {
+            stage('Setup aos containers') {
     
                 if (isUnix()) {
                     sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
