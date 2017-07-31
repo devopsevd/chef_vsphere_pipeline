@@ -23,7 +23,7 @@ node('master') {
 
             }
             
-            stage('Check Knife cookbook'){
+            stage('Check chef connection'){
                             
                 if (isUnix()) {
                     sh "knife cookbook list"
@@ -33,16 +33,15 @@ node('master') {
 
             }    
 
-            // stage('Check Knife vsphere'){
+            stage('Check vCenter connection'){
                             
-            //     if (isUnix()) {
-            //         sh "knife vsphere template list"
-            //     } else {
-            //         //bat(/knife vsphere template list/)
-            //     }
+                if (isUnix()) {
+                    sh "knife vsphere template list"
+                } else {
+                    //bat(/knife vsphere template list/)
+                }
 
-            // }      
-
+            }   
 
                 
             stage('Creat VM') {
@@ -118,7 +117,7 @@ node('master') {
             //         //bat(/knife node run_list remove chefAutoMat241 'role[dockerrun]'/)
             //     }
             // }
-            stage('Add aosNexus recipe') {    
+            stage('Add aos recipe') {    
                 if (isUnix()) {
                     sh "knife node run_list add ${node_name} 'role[aosNexus]'"
                 } else {
