@@ -3,8 +3,8 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'chefAutoMat230'
-        def vm_ip               = '10.118.41.230'
+        def node_name           = 'chefAutoMat231'
+        def vm_ip               = '10.118.41.231'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
@@ -56,7 +56,7 @@ node('master') {
 
         
             stage('Add VM as chef node') {
-                timeout(time: 60, unit: 'SECONDS'){
+                timeout(time: 120, unit: 'SECONDS'){
                     waitUntil{
                         def ret = sh(script: "sshpass -p ${ssh_pwd} ssh ${ssh_user}@${vm_ip} uptime", returnStatus: true)
                         //println ret
