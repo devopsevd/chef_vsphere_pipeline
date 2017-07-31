@@ -3,8 +3,8 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'chefAutoMat248'
-        def vm_ip               = '10.118.41.248'
+        def node_name           = 'chefAutoMat230'
+        def vm_ip               = '10.118.41.230'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
@@ -72,9 +72,55 @@ node('master') {
                     //bat(/knife bootstrap 10.118.41.247 --ssh-user root --ssh-password Password1 --node-name chefAutoMat247 --sudo --verbose/)
                 }
             }
-            stage('Add Docker install recipe') {    
+            // stage('Add Docker install recipe') {    
+            //     if (isUnix()) {
+            //         sh "knife node run_list add ${node_name} 'role[dockerinstall]'"
+            //     } else {
+            //         //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
+            //     }
+            // }
+            // stage('Install Docker') {
+    
+            //     if (isUnix()) {
+            //         sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
+            //     } else {
+            //         //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
+            //     }
+            // }
+            // stage('Remove Docker install recipe') {
+    
+            //     if (isUnix()) {
+            //         sh "knife node run_list remove ${node_name} 'role[dockerinstall]'"
+            //     } else {
+            //        // bat(/knife node run_list remove chefAutoMat241 'role[dockerinstall]'/)
+            //     }
+            // }
+            // stage('Add Docker run recipe') {
+    
+            //     if (isUnix()) {
+            //         sh "knife node run_list add ${node_name} 'role[dockerrun]'"
+            //     } else {
+            //         //bat(/knife node run_list add chefAutoMat241 'role[dockerrun]'/)
+            //     }
+            // }
+            // stage('Run Docker Container') {
+    
+            //     if (isUnix()) {
+            //         sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
+            //     } else {
+            //         //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
+            //     }
+            // }
+            // stage('Remove Docker run recipe') {    
+            //     if (isUnix()) {
+            //         sh "knife node run_list remove ${node_name} 'role[dockerrun]'"
+            //     } else {
+            //         //bat(/knife node run_list remove chefAutoMat241 'role[dockerrun]'/)
+            //     }
+            // }
+            stage('Add aosNexus recipe') {    
                 if (isUnix()) {
-                    sh "knife node run_list add ${node_name} 'role[dockerinstall]'"
+                    sh "knife node run_list add ${node_name} 'role[aosNexus]'"
                 } else {
                     //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
                 }
@@ -85,37 +131,6 @@ node('master') {
                     sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
                 } else {
                     //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
-                }
-            }
-            stage('Remove Docker install recipe') {
-    
-                if (isUnix()) {
-                    sh "knife node run_list remove ${node_name} 'role[dockerinstall]'"
-                } else {
-                   // bat(/knife node run_list remove chefAutoMat241 'role[dockerinstall]'/)
-                }
-            }
-            stage('Add Docker run recipe') {
-    
-                if (isUnix()) {
-                    sh "knife node run_list add ${node_name} 'role[dockerrun]'"
-                } else {
-                    //bat(/knife node run_list add chefAutoMat241 'role[dockerrun]'/)
-                }
-            }
-            stage('Run Docker Container') {
-    
-                if (isUnix()) {
-                    sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
-                } else {
-                    //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
-                }
-            }
-            stage('Remove Docker run recipe') {    
-                if (isUnix()) {
-                    sh "knife node run_list remove ${node_name} 'role[dockerrun]'"
-                } else {
-                    //bat(/knife node run_list remove chefAutoMat241 'role[dockerrun]'/)
                 }
             }
     }
