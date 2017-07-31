@@ -52,9 +52,7 @@ node('master') {
                     //bat(/knife vsphere vm clone "${node_name}" --template "${vm_template}" --start true --node-name "${node_name}" --resource-pool "${vm_resource_pool}" --cspec "${vm_spec}" --cips "${vm_ip}" --cdomain "${vm_domain}" --verbose/)
                 }
             }
-        
-
-        
+    
             stage('Add VM as chef node') {
                 timeout(time: 300, unit: 'SECONDS'){
                     waitUntil{
