@@ -17,7 +17,7 @@ node('master') {
 
         dir('chef-repo'){
 
-            stage('Get Chef Repo'){
+            stage('Get chef repo'){
                             
                 git 'https://github.com/devopsevd/chef_docker_cookbooks.git'
 
