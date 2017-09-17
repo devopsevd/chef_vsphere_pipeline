@@ -3,8 +3,8 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'kubeE1Node'
-        def vm_ip               = '10.118.41.60'
+        def node_name           = 'kubeE1Node2'
+        def vm_ip               = '10.118.41.61'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
