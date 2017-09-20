@@ -72,7 +72,7 @@ node('master') {
 
             stage('Add aos recipe') {    
                 if (isUnix()) {
-                    sh "knife node run_list add ${node_name} 'role[aosNexus]'"
+                    //sh "knife node run_list add ${node_name} 'role[aosNexus]'"
                 } else {
                     //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
                 }
@@ -80,7 +80,7 @@ node('master') {
             stage('Setup aos containers') {
     
                 if (isUnix()) {
-                    sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
+                    //sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
                 } else {
                     //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
                 }
